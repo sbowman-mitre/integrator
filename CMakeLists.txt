@@ -16,5 +16,8 @@ target_link_libraries(integrator cyglog4cplus-1-2-5.dll)
 
 # Installing to a separate directory
 install(TARGETS integrator DESTINATION bin)
+install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME}
+        FILES_MATCHING PATTERN "*.h")
+
 
 # Thoughts & notes:
