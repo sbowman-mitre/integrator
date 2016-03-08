@@ -46,6 +46,7 @@
 // #define INTEGRATOR_VERSION INTEGRATOR_MAKE_VERSION(1, 2, 0)
 
 //! This is integrator version number as a string.
+// FIXME add suffix to string 
 #define INTEGRATOR_VERSION_STR INTEGRATOR_MAKE_VERSION_STR(1, 2, 0)
 
 
