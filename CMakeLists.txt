@@ -4,17 +4,22 @@ project(integrator)
 enable_language(CXX)
 
 # set versions
-set(VERSION 1.1.1-SNAPSHOT)
+include (VersionUtils.cmake)
+integrator_get_version ("${PROJECT_SOURCE_DIR}/include"
+        integrator_version_major integrator_version_minor integrator_version_patch)
+message("-- Generating build for Integrator version ${integrator_version_major}.${integrator_version_minor}.${integrator_version_patch}")
+set(VERSION ${integrator_version_major}.${integrator_version_minor}.${integrator_version_patch}-SNAPSHOT)
 
 # bring log4cplus includes onto our path
 include_directories(/usr/local/include/log4cplus/)
 include_directories(${PROJECT_SOURCE_DIR}/include)
+# include_directories(${PROJECT_SOURCE_DIR}/include/integrator_config)
 
 # add directories that the linker should use when searching for libraries
 link_directories(/usr/local/bin)
 
 # Build the library
-add_library(integrator-${VERSION} SHARED include/integrator.h src/integrator.cpp)
+add_library(integrator-${VERSION} SHARED src/version.cpp src/integrator.cpp)
 target_link_libraries(integrator-${VERSION} cyglog4cplus-1-2-5.dll)
 
 # Installing to a separate directory
