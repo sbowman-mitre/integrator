@@ -11,7 +11,7 @@ message("-- Generating build for Integrator version ${integrator_version_major}.
 set(VERSION ${integrator_version_major}.${integrator_version_minor}.${integrator_version_patch}-SNAPSHOT)
 
 # bring log4cplus includes onto our path
-include_directories(/usr/local/include/log4cplus/)
+# include_directories(/usr/local/include/log4cplus/)
 include_directories(${PROJECT_SOURCE_DIR}/include)
 # include_directories(${PROJECT_SOURCE_DIR}/include/integrator_config)
 
@@ -20,7 +20,7 @@ link_directories(/usr/local/bin)
 
 # Build the library
 add_library(integrator-${VERSION} SHARED src/version.cpp src/integrator.cpp)
-target_link_libraries(integrator-${VERSION} cyglog4cplus-1-2-5.dll)
+target_link_libraries(integrator-${VERSION})
 
 # Installing to a separate directory
 install(TARGETS integrator-${VERSION} DESTINATION bin)
